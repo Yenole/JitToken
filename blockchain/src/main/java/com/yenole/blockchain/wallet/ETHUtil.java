@@ -11,35 +11,18 @@ import org.bitcoinj.wallet.UnreadableWalletException;
 
 public class ETHUtil {
 
-    public static String Address(String mnemonic) {
+    public static byte[] privateKey(String mnemonic) {
         try {
-//            MnemonicUtil.validateMnemonics(mnemonic);
-//            MnemonicUtil.validateMnemonics(mnemonicCodes);
-//            DeterministicSeed seed = new DeterministicSeed(mnemonicCodes, null, "", 0L);
-//            DeterministicKeyChain keyChain = DeterministicKeyChain.builder().seed(seed).build();
-//
-//            this.mnemonicPath = path;
-//            List<ChildNumber> zeroPath = BIP44Util.generatePath(path);
-//
-//            byte[] prvKeyBytes = keyChain.getKeyByPath(zeroPath, true).getPrivKeyBytes();
-//            this.crypto = Crypto.createPBKDF2CryptoWithKDFCached(password, prvKeyBytes);
-//            this.encMnemonic = crypto.deriveEncPair(password, Joiner.on(" ").join(mnemonicCodes).getBytes());
-//            this.crypto.clearCachedDerivedKey();
-//
-//            this.address = AddressCreatorManager.getInstance(metadata.getChainType(), metadata.isMainNet(), metadata.getSegWit()).fromPrivateKey(prvKeyBytes);
-//            metadata.setTimestamp(DateUtil.getUTCTime());
-//            metadata.setWalletType(Metadata.V3);
-//            this.metadata = metadata;
-//            this.version = VERSION;
-//            this.id = Strings.isNullOrEmpty(id) ? UUID.randomUUID().toString() : id;
-
             DeterministicSeed seed = new DeterministicSeed(mnemonic, null, "", 0L);
             DeterministicKeyChain keyChain = DeterministicKeyChain.builder().seed(seed).build();
-            byte[] prvKeyBytes = keyChain.getKeyByPath(BIP44Util.generatePath(BIP44Util.ETHEREUM_PATH), true).getPrivKeyBytes();
-            return new EthereumAddressCreator().fromPrivateKey(prvKeyBytes);
+            return keyChain.getKeyByPath(BIP44Util.generatePath(BIP44Util.ETHEREUM_PATH), true).getPrivKeyBytes();
         } catch (UnreadableWalletException e) {
             e.printStackTrace();
         }
-        return "";
+        return null;
+    }
+
+    public static String Address(String mnemonic) {
+        return new EthereumAddressCreator().fromPrivateKey(privateKey(mnemonic));
     }
 }
