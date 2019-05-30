@@ -26,4 +26,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'org.bitcoinj:bitcoinj-core:0.14.7'
+    testImplementation 'junit:junit:4.12'
 }

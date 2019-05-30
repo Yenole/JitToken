@@ -12,6 +12,7 @@ public class BIP44Util {
     public final static String BITCOIN_TESTNET_PATH = "m/44'/1'/0'";
     public final static String BITCOIN_SEGWIT_MAIN_PATH = "m/49'/0'/0'";
     public final static String BITCOIN_SEGWIT_TESTNET_PATH = "m/49'/1'/0'";
+    public final static String ETHEREUM_PATH = "m/44'/60'/0'/0/0";
 
 
     public static ImmutableList<ChildNumber> generatePath(String path) {
