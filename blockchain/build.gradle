@@ -5,18 +5,11 @@ group='com.gitee.yenole'
 android {
     compileSdkVersion 28
 
-
-
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-    }
-
-    compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
     }
 
     buildTypes {
@@ -31,6 +24,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
     implementation 'org.bitcoinj:bitcoinj-core:0.14.7'
-    implementation 'org.web3j:abi:4.3.1'
+    implementation 'org.web3j:abi:3.0.0-android'
     testImplementation 'junit:junit:4.12'
 }
