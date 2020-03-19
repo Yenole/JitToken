@@ -328,7 +328,7 @@ public class BitcoinTransaction {
             String txHash = NumericUtil.bytesToHex(Sha256Hash.hashTwice(serialStreams[1].toByteArray()));
             txHash = NumericUtil.beBigEndianHex(txHash);
 //            return new TxSignResult(signedHex, txHash, wtxID);
-            return txhash + "," + signedHex;
+            return txHash + "," + signedHex;
         } catch (IOException ex) {
             throw new TokenException("OutputStream error");
         }
