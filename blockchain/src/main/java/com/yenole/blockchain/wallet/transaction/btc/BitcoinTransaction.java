@@ -44,7 +44,7 @@ public class BitcoinTransaction {
 
 
     // 2730 sat
-    private final static long DUST_THRESHOLD = 0;
+    private final static long DUST_THRESHOLD = 1000;
 
     public BitcoinTransaction() {
 
